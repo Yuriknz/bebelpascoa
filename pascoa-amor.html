@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Páscoa, meu amor 🐣</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --chocolate: #3d1c02;
+    --caramel: #c47a2b;
+    --cream: #fdf6ec;
+    --blush: #f5c6b0;
+    --rose: #e8836a;
+    --gold: #d4a847;
+    --soft: #fbeee4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    font-family: 'Lato', sans-serif;
+    color: var(--chocolate);
+    overflow-x: hidden;
+  }
+
+  /* ── PARTICLES ── */
+  #particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .particle {
+    position: absolute;
+    font-size: 1.4rem;
+    opacity: 0;
+    animation: floatUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: .8; }
+    90%  { opacity: .6; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    z-index: 1;
+    background: radial-gradient(ellipse at 60% 30%, #fde9d4 0%, var(--cream) 70%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(196,122,43,.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(232,131,106,.10) 0%, transparent 50%);
+    z-index: -1;
+  }
+
+  .egg-icon {
+    font-size: 5rem;
+    animation: bounce 2.4s ease-in-out infinite;
+    filter: drop-shadow(0 8px 24px rgba(61,28,2,.18));
+    margin-bottom: 1.4rem;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) rotate(-4deg); }
+    50%       { transform: translateY(-14px) rotate(4deg); }
+  }
+
+  .tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: var(--caramel);
+    letter-spacing: .06em;
+    margin-bottom: .6rem;
+    opacity: 0;
+    animation: fadeIn .8s .3s forwards;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 7vw, 5rem);
+    line-height: 1.1;
+    color: var(--chocolate);
+    opacity: 0;
+    animation: fadeIn .9s .6s forwards;
+  }
+
+  h1 span { color: var(--rose); }
+
+  .subtitle {
+    margin-top: 1.2rem;
+    font-weight: 300;
+    font-size: clamp(.95rem, 2.5vw, 1.15rem);
+    color: #7a4a2a;
+    max-width: 460px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeIn .9s 1s forwards;
+  }
+
+  .scroll-hint {
+    margin-top: 3rem;
+    font-size: .8rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--caramel);
+    opacity: 0;
+    animation: fadeIn 1s 1.6s forwards, nudgeDown 2s 2s ease-in-out infinite;
+  }
+
+  @keyframes nudgeDown {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    text-align: center;
+    font-size: 1.4rem;
+    letter-spacing: .5rem;
+    color: var(--gold);
+    padding: 2rem 0 .5rem;
+    opacity: .7;
+  }
+
+  /* ── CARDS SECTION ── */
+  .section {
+    padding: 5rem 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    text-align: center;
+    margin-bottom: 2.8rem;
+    color: var(--chocolate);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.6rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem 1.8rem;
+    box-shadow: 0 4px 32px rgba(61,28,2,.09);
+    border: 1.5px solid #f0dcc8;
+    transition: transform .3s ease, box-shadow .3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .card.visible {
+    animation: slideUp .6s forwards;
+  }
+
+  @keyframes slideUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 12px 40px rgba(61,28,2,.15);
+  }
+
+  .card-icon { font-size: 2.4rem; margin-bottom: .9rem; }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: .6rem;
+    color: var(--chocolate);
+  }
+
+  .card p {
+    font-size: .95rem;
+    line-height: 1.75;
+    color: #6b3e1e;
+    font-weight: 300;
+  }
+
+  /* ── LETTER ── */
+  .letter-section {
+    background: linear-gradient(135deg, #3d1c02 0%, #6b3415 100%);
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .letter-section::before {
+    content: '🍫';
+    position: absolute;
+    font-size: 18rem;
+    opacity: .04;
+    top: -3rem;
+    right: -3rem;
+    transform: rotate(20deg);
+  }
+
+  .letter {
+    max-width: 660px;
+    margin: 0 auto;
+    background: var(--cream);
+    border-radius: 24px;
+    padding: 3rem 2.8rem;
+    box-shadow: 0 24px 60px rgba(0,0,0,.3);
+    position: relative;
+  }
+
+  .letter::before {
+    content: '"';
+    position: absolute;
+    top: .2rem;
+    left: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: var(--blush);
+    line-height: 1;
+    opacity: .5;
+  }
+
+  .letter-date {
+    text-align: right;
+    font-size: .85rem;
+    color: var(--caramel);
+    letter-spacing: .06em;
+    margin-bottom: 1.4rem;
+  }
+
+  .letter p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    line-height: 2;
+    color: #4a2510;
+    margin-bottom: 1.2rem;
+  }
+
+  .letter-sig {
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--rose);
+    margin-top: 1.6rem;
+  }
+
+  /* ── MEMORIES ── */
+  .memories-section {
+    background: var(--soft);
+    padding: 5rem 1.5rem;
+    z-index: 1;
+    position: relative;
+  }
+
+  .memories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .memory-pill {
+    background: white;
+    border-radius: 40px;
+    padding: 1rem 1.4rem;
+    text-align: center;
+    font-size: .95rem;
+    color: #5a3015;
+    border: 1.5px solid #f0dcc8;
+    box-shadow: 0 2px 12px rgba(61,28,2,.06);
+    line-height: 1.5;
+    transition: background .2s, transform .2s;
+  }
+
+  .memory-pill:hover {
+    background: var(--blush);
+    transform: scale(1.03);
+  }
+
+  .memory-pill span { display: block; font-size: 1.6rem; margin-bottom: .3rem; }
+
+  /* ── COUNTDOWN ── */
+  .countdown-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+  }
+
+  .countdown-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--caramel);
+    margin-bottom: 1.2rem;
+  }
+
+  .days-together {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 15vw, 9rem);
+    color: var(--chocolate);
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  .days-unit {
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--caramel);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .days-msg {
+    margin-top: 1.6rem;
+    font-size: 1rem;
+    color: #7a4a2a;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* ── FINAL ── */
+  .final-section {
+    background: linear-gradient(180deg, var(--cream) 0%, #fde2cc 100%);
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+  }
+
+  .heart-big {
+    font-size: 5rem;
+    animation: heartbeat 1.4s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.18); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.12); }
+  }
+
+  .final-msg {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    color: var(--chocolate);
+    margin: 1.4rem 0 .8rem;
+    line-height: 1.35;
+  }
+
+  .final-sub {
+    font-size: 1rem;
+    color: #7a4a2a;
+    font-weight: 300;
+  }
+
+  footer {
+    padding: 2rem;
+    text-align: center;
+    font-size: .78rem;
+    color: #b08060;
+    letter-spacing: .04em;
+    z-index: 1;
+    position: relative;
+  }
+
+  /* ── CHOCOLATE BAR LOADER ── */
+  #loader {
+    position: fixed;
+    inset: 0;
+    background: var(--chocolate);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity .8s ease, visibility .8s ease;
+  }
+
+  #loader.hidden { opacity: 0; visibility: hidden; }
+
+  .choco-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-bottom: 1.6rem;
+  }
+
+  .choco-piece {
+    width: 28px; height: 28px;
+    background: var(--caramel);
+    border-radius: 4px;
+    opacity: 0;
+    animation: melt .4s forwards;
+  }
+
+  @keyframes melt {
+    to { opacity: 1; }
+  }
+
+  .loader-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--blush);
+    font-size: 1.1rem;
+    letter-spacing: .05em;
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="choco-bar" id="chocoBar"></div>
+  <p class="loader-text">preparando algo especial…</p>
+</div>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="egg-icon">🥚</div>
+  <p class="tagline">uma surpresa feita com amor</p>
+  <h1>Feliz Páscoa,<br><span>meu amor</span> 💛</h1>
+  <p class="subtitle">Hoje o chocolate é doce, mas não tão doce quanto você na minha vida. Rola o dedo pra baixo 🐣</p>
+  <p class="scroll-hint">↓ &nbsp; role pra baixo &nbsp; ↓</p>
+</section>
+
+<!-- CARDS -->
+<section class="section">
+  <h2 class="section-title">Por que hoje é especial</h2>
+  <div class="cards" id="cards">
+    <div class="card">
+      <div class="card-icon">🍫</div>
+      <h3>Chocolate tem memória</h3>
+      <p>Todo chocolate que derreter na sua boca hoje vai guardar esse momento — o cheirinho, o calor, você.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🐰</div>
+      <h3>Páscoa é recomeço</h3>
+      <p>É a festa que celebra novas histórias. E a nossa é a melhor história que já comecei a escrever.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌸</div>
+      <h3>Você floresceu minha vida</h3>
+      <p>Antes de você, as datas eram só datas. Agora cada uma delas tem o seu rosto, o seu sorriso.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🥚</div>
+      <h3>Ovos escondem surpresas</h3>
+      <p>Igual a você — cada dia eu descubro uma coisa nova que me faz me apaixonar mais.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<!-- CARTA -->
+<section class="letter-section">
+  <div class="letter">
+    <p class="letter-date" id="letterDate">Páscoa • Hoje</p>
+    <p>Meu amor,</p>
+    <p>Eu poderia ter te dado só um ovo de Páscoa. Mas preferi fazer isso — algo que você pudesse guardar, reler, sentir.</p>
+    <p>Hoje é Páscoa, e eu fico pensando: o ovo é símbolo de algo que está prestes a nascer. E é exatamente isso que sinto quando estou com você — que a cada dia nasce uma versão melhor de mim.</p>
+    <p>Você é o chocolate que derrete — quente, suave, impossível de resistir. E eu não quero resistir.</p>
+    <p>Obrigado por existir, por ser minha, por me deixar ser seu.</p>
+    <p class="letter-sig">Com todo o meu amor 🍫💛</p>
+  </div>
+</section>
+
+<!-- MEMÓRIAS -->
+<section class="memories-section">
+  <h2 class="section-title">Coisas que fazem parte de nós</h2>
+  <div class="memories-grid">
+    <div class="memory-pill"><span>🌙</span>Noites conversando</div>
+    <div class="memory-pill"><span>😂</span>Risadas sem motivo</div>
+    <div class="memory-pill"><span>🤝</span>Mãos que se encaixam</div>
+    <div class="memory-pill"><span>📱</span>Mensagens de bom dia</div>
+    <div class="memory-pill"><span>🍕</span>Comidas que compartilhamos</div>
+    <div class="memory-pill"><span>👀</span>Olhares que dizem tudo</div>
+    <div class="memory-pill"><span>🎵</span>Músicas que lembram de você</div>
+    <div class="memory-pill"><span>💕</span>Abraços que curam</div>
+  </div>
+</section>
+
+<!-- DIAS JUNTOS -->
+<section class="countdown-section">
+  <p class="countdown-label">e hoje somamos</p>
+  <div class="days-together" id="daysTogether">…</div>
+  <p class="days-unit">dias juntos</p>
+  <p class="days-msg" id="daysMsg">cada um deles valeu</p>
+</section>
+
+<!-- FINAL -->
+<section class="final-section">
+  <span class="heart-big">❤️</span>
+  <p class="final-msg">Feliz Páscoa,<br>agora e sempre.</p>
+  <p class="final-sub">feito com amor • só pra você</p>
+</section>
+
+<footer>🍫 um presente digital feito à mão — com carinho de verdade 🐣</footer>
+
+<script>
+// ── DATA DA CARTA ──
+const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const now = new Date();
+document.getElementById('letterDate').textContent =
+  `Páscoa • ${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+
+// ── DIAS JUNTOS (ajuste a data de início do relacionamento aqui) ──
+// Coloque a data real do relacionamento no formato YYYY, MM-1, DD
+const startDate = new Date(2023, 8, 10); // ← TROQUE AQUI
+const diffMs = Date.now() - startDate.getTime();
+const diffDays = Math.floor(diffMs / (1000*60*60*24));
+document.getElementById('daysTogether').textContent = diffDays > 0 ? diffDays : '∞';
+if(diffDays === 1) document.getElementById('daysMsg').textContent = 'o primeiro de muitos';
+if(diffDays > 365) document.getElementById('daysMsg').textContent = 'mais de um ano de amor';
+
+// ── LOADER ──
+const bar = document.getElementById('chocoBar');
+for(let i = 0; i < 8; i++) {
+  const p = document.createElement('div');
+  p.className = 'choco-piece';
+  p.style.animationDelay = (i * 80) + 'ms';
+  bar.appendChild(p);
+}
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1200);
+});
+
+// ── PARTICLES ──
+const emojis = ['🍫','🐣','🌸','🐰','💛','✨','🥚','🌷'];
+const container = document.getElementById('particles');
+for(let i = 0; i < 18; i++) {
+  const el = document.createElement('div');
+  el.className = 'particle';
+  el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+  el.style.left = Math.random()*100 + 'vw';
+  el.style.fontSize = (.8 + Math.random()*1.2) + 'rem';
+  el.style.animationDuration = (10 + Math.random()*14) + 's';
+  el.style.animationDelay = (Math.random()*10) + 's';
+  container.appendChild(el);
+}
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if(e.isIntersecting) {
+      e.target.style.animationDelay = (i * 0.12) + 's';
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: .15 });
+document.querySelectorAll('.card').forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
