@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Feliz Páscoa, meu amor 🐣</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -15,480 +15,200 @@
     --gold: #d4a847;
     --soft: #fbeee4;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  html { font-size: 18px; }
   body {
     background-color: var(--cream);
     font-family: 'Lato', sans-serif;
     color: var(--chocolate);
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
   }
-
-  /* ── PARTICLES ── */
-  #particles {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .particle {
-    position: absolute;
-    font-size: 1.4rem;
-    opacity: 0;
-    animation: floatUp linear infinite;
-  }
-
+  #particles { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+  .particle { position:absolute; font-size:1.4rem; opacity:0; animation:floatUp linear infinite; }
   @keyframes floatUp {
-    0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-    10%  { opacity: .8; }
-    90%  { opacity: .6; }
-    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    0%   { transform:translateY(110vh) rotate(0deg); opacity:0; }
+    10%  { opacity:.8; }
+    90%  { opacity:.6; }
+    100% { transform:translateY(-10vh) rotate(360deg); opacity:0; }
   }
-
-  /* ── HERO ── */
   .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 3rem 2rem;
-    z-index: 1;
-    background: radial-gradient(ellipse at 60% 30%, #fde9d4 0%, var(--cream) 70%);
+    position:relative; min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:4rem 2rem; z-index:1;
+    background:radial-gradient(ellipse at 60% 30%, #fde9d4 0%, var(--cream) 70%);
   }
-
   .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content:''; position:absolute; inset:0;
     background-image:
       radial-gradient(circle at 20% 80%, rgba(196,122,43,.12) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(232,131,106,.10) 0%, transparent 50%);
-    z-index: -1;
+    z-index:-1;
   }
-
-  .egg-icon {
-    font-size: 5rem;
-    animation: bounce 2.4s ease-in-out infinite;
-    filter: drop-shadow(0 8px 24px rgba(61,28,2,.18));
-    margin-bottom: 1.4rem;
+  .egg-icon { width:clamp(80px,18vw,130px); height:clamp(80px,18vw,130px); animation:bounce 2.4s ease-in-out infinite; filter:drop-shadow(0 8px 24px rgba(61,28,2,.18)); margin-bottom:1.6rem; }
+  @keyframes bounce { 0%,100%{transform:translateY(0) rotate(-4deg);} 50%{transform:translateY(-14px) rotate(4deg);} }
+  .tagline { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.1rem,3.5vw,1.5rem); color:var(--caramel); letter-spacing:.06em; margin-bottom:.7rem; opacity:0; animation:fadeIn .8s .3s forwards; }
+  h1 { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,8vw,5.5rem); line-height:1.1; color:var(--chocolate); opacity:0; animation:fadeIn .9s .6s forwards; }
+  h1 span { color:var(--rose); }
+  .subtitle { margin-top:1.4rem; font-weight:300; font-size:clamp(1.05rem,3vw,1.3rem); color:#7a4a2a; max-width:500px; line-height:1.8; opacity:0; animation:fadeIn .9s 1s forwards; }
+  .scroll-hint { margin-top:3rem; font-size:.9rem; letter-spacing:.14em; text-transform:uppercase; color:var(--caramel); opacity:0; animation:fadeIn 1s 1.6s forwards, nudgeDown 2s 2s ease-in-out infinite; }
+  @keyframes nudgeDown { 0%,100%{transform:translateY(0);} 50%{transform:translateY(7px);} }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+  .divider { text-align:center; font-size:1.5rem; letter-spacing:.5rem; color:var(--gold); padding:2rem 0 .5rem; opacity:.7; }
+  .section { padding:5rem 1.5rem; position:relative; z-index:1; }
+  .section-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5.5vw,3rem); text-align:center; margin-bottom:3rem; color:var(--chocolate); }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.8rem; max-width:980px; margin:0 auto; }
+  .card { background:white; border-radius:20px; padding:2.2rem 2rem; box-shadow:0 4px 32px rgba(61,28,2,.09); border:1.5px solid #f0dcc8; transition:transform .3s ease,box-shadow .3s ease; opacity:0; transform:translateY(30px); }
+  .card.visible { animation:slideUp .6s forwards; }
+  @keyframes slideUp { to{opacity:1;transform:translateY(0);} }
+  .card:hover { transform:translateY(-6px) !important; box-shadow:0 12px 40px rgba(61,28,2,.15); }
+  .card-icon { width:56px; height:56px; margin-bottom:1rem; }
+  .card h3 { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:.7rem; color:var(--chocolate); }
+  .card p { font-size:1.05rem; line-height:1.8; color:#6b3e1e; font-weight:300; }
+  .letter-section { background:linear-gradient(135deg,#3d1c02 0%,#6b3415 100%); padding:6rem 2rem; position:relative; z-index:1; overflow:hidden; }
+  .letter { max-width:680px; margin:0 auto; background:var(--cream); border-radius:24px; padding:3.5rem 3rem; box-shadow:0 24px 60px rgba(0,0,0,.3); position:relative; }
+  .letter::before { content:'\201C'; position:absolute; top:.2rem; left:1.4rem; font-family:'Playfair Display',serif; font-size:9rem; color:var(--blush); line-height:1; opacity:.5; }
+  .letter-date { text-align:right; font-size:.95rem; color:var(--caramel); letter-spacing:.06em; margin-bottom:1.6rem; }
+  .letter p { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.1rem,2.8vw,1.25rem); line-height:2.1; color:#4a2510; margin-bottom:1.3rem; }
+  .letter-sig { text-align:right; font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--rose); margin-top:1.8rem; }
+  .memories-section { background:var(--soft); padding:5rem 1.5rem; z-index:1; position:relative; }
+  .memories-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1.2rem; max-width:900px; margin:0 auto; }
+  .memory-pill { background:white; border-radius:40px; padding:1.2rem 1.4rem; text-align:center; font-size:1.05rem; color:#5a3015; border:1.5px solid #f0dcc8; box-shadow:0 2px 12px rgba(61,28,2,.06); line-height:1.5; transition:background .2s,transform .2s; display:flex; flex-direction:column; align-items:center; gap:.5rem; }
+  .memory-pill:hover { background:var(--blush); transform:scale(1.03); }
+  .memory-pill svg { width:38px; height:38px; }
+  .countdown-section { padding:5rem 2rem; text-align:center; z-index:1; position:relative; }
+  .countdown-label { font-family:'Playfair Display',serif; font-size:1.2rem; font-style:italic; color:var(--caramel); margin-bottom:1.2rem; }
+  .days-together { font-family:'Playfair Display',serif; font-size:clamp(5rem,18vw,10rem); color:var(--chocolate); line-height:1; font-weight:700; }
+  .days-unit { font-size:clamp(1.1rem,3.5vw,1.6rem); color:var(--caramel); letter-spacing:.12em; text-transform:uppercase; margin-top:.4rem; }
+  .days-msg { margin-top:1.8rem; font-size:1.1rem; color:#7a4a2a; font-style:italic; font-family:'Playfair Display',serif; }
+  .final-section { background:linear-gradient(180deg,var(--cream) 0%,#fde2cc 100%); padding:7rem 2rem 5rem; text-align:center; z-index:1; position:relative; }
+  .heart-svg { width:clamp(70px,16vw,110px); height:clamp(70px,16vw,110px); animation:heartbeat 1.4s ease-in-out infinite; display:inline-block; }
+  @keyframes heartbeat { 0%,100%{transform:scale(1);} 14%{transform:scale(1.18);} 28%{transform:scale(1);} 42%{transform:scale(1.12);} }
+  .final-msg { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,5vw,2.8rem); color:var(--chocolate); margin:1.6rem 0 1rem; line-height:1.35; }
+  .final-sub { font-size:1.1rem; color:#7a4a2a; font-weight:300; }
+  footer { padding:2.5rem; text-align:center; font-size:.88rem; color:#b08060; letter-spacing:.04em; z-index:1; position:relative; }
+  #loader { position:fixed; inset:0; background:var(--chocolate); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:9999; transition:opacity .8s ease,visibility .8s ease; }
+  #loader.hidden { opacity:0; visibility:hidden; }
+  .choco-bar { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin-bottom:1.8rem; }
+  .choco-piece { width:32px; height:32px; background:var(--caramel); border-radius:5px; opacity:0; animation:melt .4s forwards; }
+  @keyframes melt { to{opacity:1;} }
+  .loader-text { font-family:'Playfair Display',serif; font-style:italic; color:var(--blush); font-size:1.2rem; letter-spacing:.05em; }
+  @media(max-width:600px) {
+    html { font-size:17px; }
+    .letter { padding:2.2rem 1.6rem; }
+    .cards { grid-template-columns:1fr; }
+    .memories-grid { grid-template-columns:repeat(2,1fr); }
+    .memory-pill { padding:.9rem 1rem; font-size:1rem; }
   }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0) rotate(-4deg); }
-    50%       { transform: translateY(-14px) rotate(4deg); }
-  }
-
-  .tagline {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    color: var(--caramel);
-    letter-spacing: .06em;
-    margin-bottom: .6rem;
-    opacity: 0;
-    animation: fadeIn .8s .3s forwards;
-  }
-
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 7vw, 5rem);
-    line-height: 1.1;
-    color: var(--chocolate);
-    opacity: 0;
-    animation: fadeIn .9s .6s forwards;
-  }
-
-  h1 span { color: var(--rose); }
-
-  .subtitle {
-    margin-top: 1.2rem;
-    font-weight: 300;
-    font-size: clamp(.95rem, 2.5vw, 1.15rem);
-    color: #7a4a2a;
-    max-width: 460px;
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeIn .9s 1s forwards;
-  }
-
-  .scroll-hint {
-    margin-top: 3rem;
-    font-size: .8rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--caramel);
-    opacity: 0;
-    animation: fadeIn 1s 1.6s forwards, nudgeDown 2s 2s ease-in-out infinite;
-  }
-
-  @keyframes nudgeDown {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(6px); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── DIVIDER ── */
-  .divider {
-    text-align: center;
-    font-size: 1.4rem;
-    letter-spacing: .5rem;
-    color: var(--gold);
-    padding: 2rem 0 .5rem;
-    opacity: .7;
-  }
-
-  /* ── CARDS SECTION ── */
-  .section {
-    padding: 5rem 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    text-align: center;
-    margin-bottom: 2.8rem;
-    color: var(--chocolate);
-  }
-
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.6rem;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .card {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem 1.8rem;
-    box-shadow: 0 4px 32px rgba(61,28,2,.09);
-    border: 1.5px solid #f0dcc8;
-    transition: transform .3s ease, box-shadow .3s ease;
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .card.visible {
-    animation: slideUp .6s forwards;
-  }
-
-  @keyframes slideUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .card:hover {
-    transform: translateY(-6px) !important;
-    box-shadow: 0 12px 40px rgba(61,28,2,.15);
-  }
-
-  .card-icon { font-size: 2.4rem; margin-bottom: .9rem; }
-
-  .card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    margin-bottom: .6rem;
-    color: var(--chocolate);
-  }
-
-  .card p {
-    font-size: .95rem;
-    line-height: 1.75;
-    color: #6b3e1e;
-    font-weight: 300;
-  }
-
-  /* ── LETTER ── */
-  .letter-section {
-    background: linear-gradient(135deg, #3d1c02 0%, #6b3415 100%);
-    padding: 6rem 2rem;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-  }
-
-  .letter-section::before {
-    content: '🍫';
-    position: absolute;
-    font-size: 18rem;
-    opacity: .04;
-    top: -3rem;
-    right: -3rem;
-    transform: rotate(20deg);
-  }
-
-  .letter {
-    max-width: 660px;
-    margin: 0 auto;
-    background: var(--cream);
-    border-radius: 24px;
-    padding: 3rem 2.8rem;
-    box-shadow: 0 24px 60px rgba(0,0,0,.3);
-    position: relative;
-  }
-
-  .letter::before {
-    content: '"';
-    position: absolute;
-    top: .2rem;
-    left: 1.4rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 8rem;
-    color: var(--blush);
-    line-height: 1;
-    opacity: .5;
-  }
-
-  .letter-date {
-    text-align: right;
-    font-size: .85rem;
-    color: var(--caramel);
-    letter-spacing: .06em;
-    margin-bottom: 1.4rem;
-  }
-
-  .letter p {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(1rem, 2.5vw, 1.15rem);
-    line-height: 2;
-    color: #4a2510;
-    margin-bottom: 1.2rem;
-  }
-
-  .letter-sig {
-    text-align: right;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    color: var(--rose);
-    margin-top: 1.6rem;
-  }
-
-  /* ── MEMORIES ── */
-  .memories-section {
-    background: var(--soft);
-    padding: 5rem 1.5rem;
-    z-index: 1;
-    position: relative;
-  }
-
-  .memories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.2rem;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .memory-pill {
-    background: white;
-    border-radius: 40px;
-    padding: 1rem 1.4rem;
-    text-align: center;
-    font-size: .95rem;
-    color: #5a3015;
-    border: 1.5px solid #f0dcc8;
-    box-shadow: 0 2px 12px rgba(61,28,2,.06);
-    line-height: 1.5;
-    transition: background .2s, transform .2s;
-  }
-
-  .memory-pill:hover {
-    background: var(--blush);
-    transform: scale(1.03);
-  }
-
-  .memory-pill span { display: block; font-size: 1.6rem; margin-bottom: .3rem; }
-
-  /* ── COUNTDOWN ── */
-  .countdown-section {
-    padding: 5rem 2rem;
-    text-align: center;
-    z-index: 1;
-    position: relative;
-  }
-
-  .countdown-label {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--caramel);
-    margin-bottom: 1.2rem;
-  }
-
-  .days-together {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(4rem, 15vw, 9rem);
-    color: var(--chocolate);
-    line-height: 1;
-    font-weight: 700;
-  }
-
-  .days-unit {
-    font-size: clamp(1rem, 3vw, 1.4rem);
-    color: var(--caramel);
-    letter-spacing: .1em;
-    text-transform: uppercase;
-  }
-
-  .days-msg {
-    margin-top: 1.6rem;
-    font-size: 1rem;
-    color: #7a4a2a;
-    font-style: italic;
-    font-family: 'Playfair Display', serif;
-  }
-
-  /* ── FINAL ── */
-  .final-section {
-    background: linear-gradient(180deg, var(--cream) 0%, #fde2cc 100%);
-    padding: 6rem 2rem 4rem;
-    text-align: center;
-    z-index: 1;
-    position: relative;
-  }
-
-  .heart-big {
-    font-size: 5rem;
-    animation: heartbeat 1.4s ease-in-out infinite;
-    display: inline-block;
-  }
-
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    14%       { transform: scale(1.18); }
-    28%       { transform: scale(1); }
-    42%       { transform: scale(1.12); }
-  }
-
-  .final-msg {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.5rem, 4vw, 2.4rem);
-    color: var(--chocolate);
-    margin: 1.4rem 0 .8rem;
-    line-height: 1.35;
-  }
-
-  .final-sub {
-    font-size: 1rem;
-    color: #7a4a2a;
-    font-weight: 300;
-  }
-
-  footer {
-    padding: 2rem;
-    text-align: center;
-    font-size: .78rem;
-    color: #b08060;
-    letter-spacing: .04em;
-    z-index: 1;
-    position: relative;
-  }
-
-  /* ── CHOCOLATE BAR LOADER ── */
-  #loader {
-    position: fixed;
-    inset: 0;
-    background: var(--chocolate);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: opacity .8s ease, visibility .8s ease;
-  }
-
-  #loader.hidden { opacity: 0; visibility: hidden; }
-
-  .choco-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
-    margin-bottom: 1.6rem;
-  }
-
-  .choco-piece {
-    width: 28px; height: 28px;
-    background: var(--caramel);
-    border-radius: 4px;
-    opacity: 0;
-    animation: melt .4s forwards;
-  }
-
-  @keyframes melt {
-    to { opacity: 1; }
-  }
-
-  .loader-text {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    color: var(--blush);
-    font-size: 1.1rem;
-    letter-spacing: .05em;
+  @media(min-width:601px) and (max-width:1024px) {
+    .cards { grid-template-columns:repeat(2,1fr); }
+    .memories-grid { grid-template-columns:repeat(3,1fr); }
   }
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
 <div id="loader">
   <div class="choco-bar" id="chocoBar"></div>
   <p class="loader-text">preparando algo especial…</p>
 </div>
 
-<!-- PARTICLES -->
 <div id="particles"></div>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="egg-icon">🥚</div>
+  <svg class="egg-icon" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="50" cy="68" rx="38" ry="50" fill="#f5c6b0"/>
+    <ellipse cx="50" cy="68" rx="38" ry="50" fill="none" stroke="#e8836a" stroke-width="2.5"/>
+    <path d="M14 58 Q50 48 86 58" stroke="#c47a2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M13 68 Q50 58 87 68" stroke="#e8836a" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M14 78 Q50 68 86 78" stroke="#c47a2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="34" cy="47" r="5" fill="#d4a847" opacity=".7"/>
+    <circle cx="66" cy="47" r="5" fill="#d4a847" opacity=".7"/>
+    <circle cx="50" cy="90" r="4" fill="#e8836a" opacity=".6"/>
+    <circle cx="34" cy="47" r="2.5" fill="#c47a2b"/>
+    <circle cx="66" cy="47" r="2.5" fill="#c47a2b"/>
+  </svg>
   <p class="tagline">uma surpresa feita com amor</p>
   <h1>Feliz Páscoa,<br><span>meu amor</span> 💛</h1>
   <p class="subtitle">Hoje o chocolate é doce, mas não tão doce quanto você na minha vida. Rola o dedo pra baixo 🐣</p>
   <p class="scroll-hint">↓ &nbsp; role pra baixo &nbsp; ↓</p>
 </section>
 
-<!-- CARDS -->
 <section class="section">
   <h2 class="section-title">Por que hoje é especial</h2>
   <div class="cards" id="cards">
+
     <div class="card">
-      <div class="card-icon">🍫</div>
+      <svg class="card-icon" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="10" width="48" height="36" rx="7" fill="#6b3415"/>
+        <rect x="4" y="10" width="48" height="36" rx="7" fill="none" stroke="#3d1c02" stroke-width="1.5"/>
+        <line x1="4" y1="26" x2="52" y2="26" stroke="#3d1c02" stroke-width="2"/>
+        <line x1="21" y1="10" x2="21" y2="46" stroke="#3d1c02" stroke-width="2"/>
+        <line x1="38" y1="10" x2="38" y2="46" stroke="#3d1c02" stroke-width="2"/>
+        <rect x="7" y="13" width="10" height="9" rx="2" fill="#c47a2b" opacity=".55"/>
+        <rect x="24" y="13" width="10" height="9" rx="2" fill="#c47a2b" opacity=".55"/>
+        <rect x="41" y="13" width="7" height="9" rx="2" fill="#c47a2b" opacity=".55"/>
+        <rect x="7" y="29" width="10" height="9" rx="2" fill="#c47a2b" opacity=".55"/>
+        <rect x="24" y="29" width="10" height="9" rx="2" fill="#c47a2b" opacity=".55"/>
+        <rect x="41" y="29" width="7" height="9" rx="2" fill="#c47a2b" opacity=".55"/>
+      </svg>
       <h3>Chocolate tem memória</h3>
       <p>Todo chocolate que derreter na sua boca hoje vai guardar esse momento — o cheirinho, o calor, você.</p>
     </div>
+
     <div class="card">
-      <div class="card-icon">🐰</div>
+      <svg class="card-icon" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="28" cy="36" rx="17" ry="14" fill="#f5c6b0"/>
+        <ellipse cx="28" cy="36" rx="17" ry="14" fill="none" stroke="#e8836a" stroke-width="1.5"/>
+        <ellipse cx="20" cy="16" rx="5.5" ry="13" fill="#f5c6b0" stroke="#e8836a" stroke-width="1.5"/>
+        <ellipse cx="36" cy="16" rx="5.5" ry="13" fill="#f5c6b0" stroke="#e8836a" stroke-width="1.5"/>
+        <ellipse cx="20" cy="16" rx="2.8" ry="8.5" fill="#e8836a" opacity=".45"/>
+        <ellipse cx="36" cy="16" rx="2.8" ry="8.5" fill="#e8836a" opacity=".45"/>
+        <circle cx="23" cy="33" r="2.2" fill="#3d1c02"/>
+        <circle cx="33" cy="33" r="2.2" fill="#3d1c02"/>
+        <ellipse cx="28" cy="38" rx="3" ry="2" fill="#e8836a" opacity=".6"/>
+        <path d="M24 41 Q28 44.5 32 41" stroke="#3d1c02" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
       <h3>Páscoa é recomeço</h3>
       <p>É a festa que celebra novas histórias. E a nossa é a melhor história que já comecei a escrever.</p>
     </div>
+
     <div class="card">
-      <div class="card-icon">🌸</div>
+      <svg class="card-icon" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+        <line x1="28" y1="52" x2="28" y2="30" stroke="#3a7a2a" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="21" cy="43" rx="8" ry="4.5" fill="#5aaa3a" opacity=".7" transform="rotate(-30 21 43)"/>
+        <ellipse cx="28" cy="18" rx="6" ry="11" fill="#fde9d4" transform="rotate(0 28 28)"/>
+        <ellipse cx="28" cy="18" rx="6" ry="11" fill="#f5c6b0" opacity=".6" transform="rotate(0 28 28)"/>
+        <ellipse cx="28" cy="18" rx="6" ry="11" fill="#fde9d4" transform="rotate(60 28 28)"/>
+        <ellipse cx="28" cy="18" rx="6" ry="11" fill="#f5c6b0" opacity=".6" transform="rotate(60 28 28)"/>
+        <ellipse cx="28" cy="18" rx="6" ry="11" fill="#fde9d4" transform="rotate(120 28 28)"/>
+        <ellipse cx="28" cy="18" rx="6" ry="11" fill="#f5c6b0" opacity=".6" transform="rotate(120 28 28)"/>
+        <circle cx="28" cy="28" r="7.5" fill="#d4a847"/>
+        <circle cx="28" cy="28" r="4.5" fill="#c47a2b"/>
+      </svg>
       <h3>Você floresceu minha vida</h3>
       <p>Antes de você, as datas eram só datas. Agora cada uma delas tem o seu rosto, o seu sorriso.</p>
     </div>
+
     <div class="card">
-      <div class="card-icon">🥚</div>
+      <svg class="card-icon" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="28" cy="33" rx="21" ry="22" fill="#fde9d4"/>
+        <ellipse cx="28" cy="33" rx="21" ry="22" fill="none" stroke="#c47a2b" stroke-width="2"/>
+        <path d="M9 29 Q28 21 47 29" stroke="#e8836a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M8 36 Q28 28 48 36" stroke="#c47a2b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="22" r="3" fill="#d4a847" opacity=".8"/>
+        <circle cx="36" cy="20" r="2.2" fill="#e8836a" opacity=".7"/>
+        <circle cx="28" cy="46" r="2.5" fill="#d4a847" opacity=".7"/>
+      </svg>
       <h3>Ovos escondem surpresas</h3>
       <p>Igual a você — cada dia eu descubro uma coisa nova que me faz me apaixonar mais.</p>
     </div>
+
   </div>
 </section>
 
 <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-<!-- CARTA -->
 <section class="letter-section">
   <div class="letter">
     <p class="letter-date" id="letterDate">Páscoa • Hoje</p>
@@ -501,22 +221,93 @@
   </div>
 </section>
 
-<!-- MEMÓRIAS -->
 <section class="memories-section">
   <h2 class="section-title">Coisas que fazem parte de nós</h2>
   <div class="memories-grid">
-    <div class="memory-pill"><span>🌙</span>Noites conversando</div>
-    <div class="memory-pill"><span>😂</span>Risadas sem motivo</div>
-    <div class="memory-pill"><span>🤝</span>Mãos que se encaixam</div>
-    <div class="memory-pill"><span>📱</span>Mensagens de bom dia</div>
-    <div class="memory-pill"><span>🍕</span>Comidas que compartilhamos</div>
-    <div class="memory-pill"><span>👀</span>Olhares que dizem tudo</div>
-    <div class="memory-pill"><span>🎵</span>Músicas que lembram de você</div>
-    <div class="memory-pill"><span>💕</span>Abraços que curam</div>
+
+    <div class="memory-pill">
+      <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 4 A15 15 0 1 0 19 34 A10 10 0 1 1 19 4 Z" fill="#c47a2b"/>
+        <circle cx="25" cy="11" r="2.2" fill="#d4a847" opacity=".65"/>
+        <circle cx="28" cy="21" r="1.6" fill="#d4a847" opacity=".45"/>
+      </svg>
+      Noites conversando
+    </div>
+
+    <div class="memory-pill">
+      <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="19" cy="19" r="16" fill="#d4a847"/>
+        <circle cx="19" cy="19" r="16" fill="none" stroke="#c47a2b" stroke-width="1.5"/>
+        <circle cx="13.5" cy="15" r="2.2" fill="#3d1c02"/>
+        <circle cx="24.5" cy="15" r="2.2" fill="#3d1c02"/>
+        <path d="M11 23 Q19 31 27 23" stroke="#3d1c02" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      </svg>
+      Risadas sem motivo
+    </div>
+
+    <div class="memory-pill">
+      <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="17" width="32" height="14" rx="7" fill="#f5c6b0" stroke="#e8836a" stroke-width="1.5"/>
+        <rect x="3" y="7" width="16" height="14" rx="6" fill="#f5c6b0" stroke="#e8836a" stroke-width="1.5"/>
+        <rect x="19" y="7" width="16" height="14" rx="6" fill="#fde9d4" stroke="#c47a2b" stroke-width="1.5"/>
+        <circle cx="19" cy="17" r="3.5" fill="#e8836a" opacity=".5"/>
+      </svg>
+      Mãos que se encaixam
+    </div>
+
+    <div class="memory-pill">
+      <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="6" width="32" height="21" rx="6" fill="#c47a2b"/>
+        <path d="M10 27 L8 34 L20 27 Z" fill="#c47a2b"/>
+        <line x1="9" y1="14" x2="29" y2="14" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="9" y1="20" x2="22" y2="20" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      Mensagens de bom dia
+    </div>
+
+    <div class="memory-pill">
+      <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 3 L34 32 L4 32 Z" fill="#d4a847" stroke="#c47a2b" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="19" cy="21" r="3.5" fill="#e8836a"/>
+        <circle cx="12" cy="27" r="2.5" fill="#e8836a"/>
+        <circle cx="26" cy="27" r="2.5" fill="#e8836a"/>
+      </svg>
+      Comidas que compartilhamos
+    </div>
+
+    <div class="memory-pill">
+      <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 19 Q19 5 35 19 Q19 33 3 19 Z" fill="#fde9d4" stroke="#e8836a" stroke-width="1.5"/>
+        <circle cx="19" cy="19" r="7" fill="#e8836a"/>
+        <circle cx="19" cy="19" r="4" fill="#3d1c02"/>
+        <circle cx="21.5" cy="17" r="1.5" fill="white"/>
+      </svg>
+      Olhares que dizem tudo
+    </div>
+
+    <div class="memory-pill">
+      <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="12" cy="30" rx="7" ry="4.5" fill="#c47a2b"/>
+        <ellipse cx="28" cy="25" rx="7" ry="4.5" fill="#c47a2b"/>
+        <line x1="19" y1="30" x2="19" y2="10" stroke="#c47a2b" stroke-width="3" stroke-linecap="round"/>
+        <line x1="35" y1="25" x2="35" y2="5" stroke="#c47a2b" stroke-width="3" stroke-linecap="round"/>
+        <line x1="19" y1="10" x2="35" y2="5" stroke="#c47a2b" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      Músicas que lembram de você
+    </div>
+
+    <div class="memory-pill">
+      <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 15 C8 10 15 9 18 14 C21 9 28 10 28 15 C28 22 19 29 18 30 C17 29 8 22 8 15 Z" fill="#e8836a"/>
+        <path d="M4 21 C4 16 8 15 11 18" stroke="#c47a2b" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        <path d="M34 21 C34 16 30 15 27 18" stroke="#c47a2b" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      </svg>
+      Abraços que curam
+    </div>
+
   </div>
 </section>
 
-<!-- DIAS JUNTOS -->
 <section class="countdown-section">
   <p class="countdown-label">e hoje somamos</p>
   <div class="days-together" id="daysTogether">…</div>
@@ -524,9 +315,11 @@
   <p class="days-msg" id="daysMsg">cada um deles valeu</p>
 </section>
 
-<!-- FINAL -->
 <section class="final-section">
-  <span class="heart-big">❤️</span>
+  <svg class="heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 80 C50 80 8 54 8 27 C8 14 18 7 29 7 C37 7 44 12 50 20 C56 12 63 7 71 7 C82 7 92 14 92 27 C92 54 50 80 50 80 Z" fill="#e8836a"/>
+    <path d="M22 21 Q30 14 40 20" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".45"/>
+  </svg>
   <p class="final-msg">Feliz Páscoa,<br>agora e sempre.</p>
   <p class="final-sub">feito com amor • só pra você</p>
 </section>
@@ -534,57 +327,50 @@
 <footer>🍫 um presente digital feito à mão — com carinho de verdade 🐣</footer>
 
 <script>
-// ── DATA DA CARTA ──
 const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const now = new Date();
 document.getElementById('letterDate').textContent =
   `Páscoa • ${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
 
-// ── DIAS JUNTOS (ajuste a data de início do relacionamento aqui) ──
-// Coloque a data real do relacionamento no formato YYYY, MM-1, DD
-const startDate = new Date(2023, 8, 10); // ← TROQUE AQUI
-const diffMs = Date.now() - startDate.getTime();
-const diffDays = Math.floor(diffMs / (1000*60*60*24));
+const startDate = new Date(2023, 8, 10); // 10 de setembro de 2023
+const diffDays = Math.floor((Date.now() - startDate.getTime()) / 86400000);
 document.getElementById('daysTogether').textContent = diffDays > 0 ? diffDays : '∞';
 if(diffDays === 1) document.getElementById('daysMsg').textContent = 'o primeiro de muitos';
 if(diffDays > 365) document.getElementById('daysMsg').textContent = 'mais de um ano de amor';
 
-// ── LOADER ──
 const bar = document.getElementById('chocoBar');
-for(let i = 0; i < 8; i++) {
-  const p = document.createElement('div');
-  p.className = 'choco-piece';
-  p.style.animationDelay = (i * 80) + 'ms';
+for(let i=0;i<8;i++){
+  const p=document.createElement('div');
+  p.className='choco-piece';
+  p.style.animationDelay=(i*80)+'ms';
   bar.appendChild(p);
 }
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1200);
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1200);
 });
 
-// ── PARTICLES ──
-const emojis = ['🍫','🐣','🌸','🐰','💛','✨','🥚','🌷'];
-const container = document.getElementById('particles');
-for(let i = 0; i < 18; i++) {
-  const el = document.createElement('div');
-  el.className = 'particle';
-  el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-  el.style.left = Math.random()*100 + 'vw';
-  el.style.fontSize = (.8 + Math.random()*1.2) + 'rem';
-  el.style.animationDuration = (10 + Math.random()*14) + 's';
-  el.style.animationDelay = (Math.random()*10) + 's';
+const emojis=['🍫','🐣','🌸','🐰','💛','✨','🥚','🌷'];
+const container=document.getElementById('particles');
+for(let i=0;i<18;i++){
+  const el=document.createElement('div');
+  el.className='particle';
+  el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(.9+Math.random()*1.3)+'rem';
+  el.style.animationDuration=(10+Math.random()*14)+'s';
+  el.style.animationDelay=(Math.random()*10)+'s';
   container.appendChild(el);
 }
 
-// ── SCROLL REVEAL ──
-const observer = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if(e.isIntersecting) {
-      e.target.style.animationDelay = (i * 0.12) + 's';
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      e.target.style.animationDelay=(i*.12)+'s';
       e.target.classList.add('visible');
     }
   });
-}, { threshold: .15 });
-document.querySelectorAll('.card').forEach(c => observer.observe(c));
+},{threshold:.12});
+document.querySelectorAll('.card').forEach(c=>observer.observe(c));
 </script>
 </body>
 </html>
